@@ -28,7 +28,7 @@ public:
 class ShapeAbstractFactory : public AbstractFactory {
 	public:
 		Shape* get(){
-			if (true){
+			if (true){ // FOR EXAMPLE: BASE ON OPERATING SYSTEM
 				return new Circle;
 			}else {
 				return new Square;
