@@ -100,10 +100,6 @@ class Director {
         }
 };
 
-/* Concrete builder for Nissan family cars */
-
-
-
 int main(){
     Car* car;
     Director director;
