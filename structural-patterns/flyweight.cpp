@@ -1,52 +1,54 @@
 #include<iostream>
 using namespace std;
 
-class Gazillion {
-  public:
-    Gazillion(int value_one) {
-        m_value_one = value_one;
-        cout << "ctor: " << m_value_one << '\n';
-    }
-    ~Gazillion() {
-        cout << m_value_one << ' ';
-    }
-    void report(int value_two) {
-        cout << m_value_one << value_two << ' ';
-    }
-  private:
-    int m_value_one;
+class Object {
+public:
+  Object(int value_one) {
+    m_value_one = value_one;
+    cout << "ctor: " << m_value_one << '\n';
+  }
+  ~Object() {
+    cout << m_value_one << ' ';
+  }
+  void report(int value_two) {
+    cout << m_value_one << value_two << ' ';
+  }
+private:
+  int m_value_one;
 };
 
-class Factory {
-  public:
-    static Gazillion *get_fly(int in) {
-        if (!s_pool[in])
-          s_pool[in] = new Gazillion(in);
-        return s_pool[in];
+class FlyWeight {
+  public:    
+    static int X, Y;
+    static Object *get_record(int in) {
+      if (!myArray[in])
+        myArray[in] = new Object(in);
+      return myArray[in];
     }
     static void clean_up() {
-        cout << "dtors: ";
-        for (int i = 0; i < X; ++i)
-          if (s_pool[i])
-            delete s_pool[i];
-        cout << '\n'; }
-    static int X, Y;
+      cout << "dtors: ";
+      for (int i = 0; i < X; ++i){
+        if (myArray[i]){
+          delete myArray[i];
+        }
+      }
+      cout << '\n'; 
+    }
   private:
-    static Gazillion *s_pool[];
+      static Object *myArray[];
 };
 
-int Factory::X = 6, Factory::Y = 10;
-Gazillion *Factory::s_pool[] = 
-{
+
+int FlyWeight::X = 6, FlyWeight::Y = 10;
+Object *FlyWeight::myArray[] =  {
   0, 0, 0, 0, 0, 0
 };
 
 int main() {
-  for (int i = 0; i < Factory::X; ++i)
-  {
-    for (int j = 0; j < Factory::Y; ++j)
-      Factory::get_fly(i)->report(j);
+  for (int i = 0; i < FlyWeight::X; ++i){
+    for (int j = 0; j < FlyWeight::Y; ++j)
+      FlyWeight::get_record(i)->report(j);
     cout << '\n';
   }
-  Factory::clean_up();
+  FlyWeight::clean_up();
 }
