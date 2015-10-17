@@ -43,8 +43,7 @@ class AnalyzeError : public Error {
      void ProcessError(ErrorReport& report) {
        if ( report.GetState() == ANALYZE ) {
            cout << "AnalyzeError::Handled the command to analyze the error ..." << endl;
-       }
-       else {
+       }else {
            cout << "AnalyzeError::Passing to my successor ..." << endl;
            successor->ProcessError(report);
        }
