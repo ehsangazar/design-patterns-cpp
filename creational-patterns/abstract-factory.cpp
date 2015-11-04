@@ -1,50 +1,64 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
-class Shape {
+// Default Classes
+class Device
+{
 public:
-	virtual void draw() = 0;
+	virtual void send(string data) = 0;	
 };
 
-class Circle : public Shape {
+class Wifi : public Device
+{
 public:
-	void draw() {
-		cout<<"Circle\n";
+	void send(string data)
+	{
+		cout<<"Sent By Wifi: "<<data<<endl;
 	}
 };
 
-class Square : public Shape {
+class Bluetooth : public Device
+{
 public:
-	void draw() {
-		cout<<"Square\n";
+	void send(string data)
+	{
+		cout<<"Sent By Bluetooth: "<<data<<endl;
 	}
 };
 
-class AbstractFactory {
+// Abstract Factory Started
+// Problem: Multiple if every function for handle the environment
+// Solution: Build Abstract Factory and get method
+
+class AbstractFactory
+{
 public:
-	virtual Shape* get() = 0;
+	virtual Device* get() = 0;
 };
 
-class ShapeAbstractFactory : public AbstractFactory {
-	public:
-		Shape* get(){
-			if (true){ // FOR EXAMPLE: BASE ON OPERATING SYSTEM
-				return new Circle;
-			}else {
-				return new Square;
-			}
+class DeviceAbstractFactory : public AbstractFactory
+{
+public:
+	Device* get()
+	{
+		if (true) // Confitions
+		{
+			return new Wifi;
 		}
+		else
+		{
+			return new Bluetooth;
+		}
+	}
 };
 
-int main(){
-	AbstractFactory* abstractFactory = new ShapeAbstractFactory;
-	Shape* shapes[3];
-
-	shapes[0] = abstractFactory->get();
-	shapes[1] = abstractFactory->get();
-	shapes[2] = abstractFactory->get();
-
-	for (int i = 0; i < 3; i++){
-		shapes[i]->draw();
-	}
+// Main Usage
+int main()
+{
+	AbstractFactory *abstractFactory = new DeviceAbstractFactory;
+	Device* device;
+	device = abstractFactory->get();	
+	
+	device->send("Abstract Factory Design Pattern Worked.");
 }

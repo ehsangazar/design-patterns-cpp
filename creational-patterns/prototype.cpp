@@ -2,94 +2,89 @@
 #include <string>
 using namespace std;
 
-class Prototype {
-    protected:
-        string type;
-        int value;
-    public:
-        virtual Prototype* clone() = 0;
-        string getType() {
-            return type;
-        }
-        int getValue() {
-            return value;
-        }
+// Default Classes
+class Device
+{
+public:
+    virtual void send(string data) = 0; 
+    virtual int setSpeed(int value) = 0;
+    virtual int getSpeed() = 0;
 };
 
-class ConcretePrototype1 : public Prototype {
-    public:
-        ConcretePrototype1(int number) {
-            type  = "Type1";
-            value = number;
-        }
-        
-        Prototype* clone() {
-            return new ConcretePrototype1(*this);
-        }
+class Wifi : public Device
+{
+public:
+    int speed;
+    Wifi()
+    {
+        speed = 100;
+    }
+    int setSpeed(int value)
+    {
+        speed = value;
+    }
+    int getSpeed()
+    {
+        return speed;
+    }
+    void send(string data)
+    {
+        cout<<"Sent By Wifi: "<<data<<" Speed: "<<speed<<endl;
+    }
 };
 
-class ConcretePrototype2 : public Prototype {
-    public:
-        ConcretePrototype2(int number) {
-            type  = "Type2";
-            value = number;
-        }
-        Prototype* clone() {
-            return new ConcretePrototype2(*this);
-        }
+class Bluetooth : public Device
+{
+public:
+    int speed;
+    Bluetooth(){
+        speed = 8;
+    }
+    int setSpeed(int value)
+    {
+        speed = value;
+    }
+    int getSpeed()
+    {
+        return speed;
+    }
+    void send(string data)
+    {
+        cout<<"Sent By Bluetooth: "<<data<<" Speed: "<<speed<<endl;
+    }
 };
 
-class ObjectFactory {
-    static Prototype* type1value1;
-    static Prototype* type1value2;
-    static Prototype* type2value1;
-    static Prototype* type2value2;
+// Prototype Started
+// Problem: Clone the old object
+// Solution: Clone function
 
-    public:
-        static void  initialize() {
-            type1value1 = new ConcretePrototype1(1);
-            type1value2 = new ConcretePrototype1(2);
-            type2value1 = new ConcretePrototype2(1);
-            type2value2 = new ConcretePrototype2(2);
-        }
-
-        static Prototype* getType1Value1() {
-            return type1value1->clone();
-        }
-
-        static Prototype* getType1Value2() {
-            return type1value2->clone();
-        }
-
-        static Prototype* getType2Value1() {
-            return type2value1->clone();
-        }
-
-        static Prototype* getType2Value2() {
-            return type2value2->clone();
-        }
+class Prototype
+{
+public:
+    virtual Device* clone(Device *oldOneObject) = 0;
 };
 
-Prototype* ObjectFactory::type1value1 = 0;
-Prototype* ObjectFactory::type1value2 = 0;
-Prototype* ObjectFactory::type2value1 = 0;
-Prototype* ObjectFactory::type2value2 = 0;
+class BluetoothPrototype : public Prototype
+{
+public:
+    Device* clone(Device* oldOneObject)
+    {
+        Device* newOneObject = new Bluetooth;
+        newOneObject->setSpeed(oldOneObject->getSpeed());
+        return newOneObject;
+    }
+};
 
-int main() {
-    ObjectFactory::initialize();
-    Prototype* object;
 
-    object = ObjectFactory::getType1Value1();
-    cout << object->getType() << ": " << object->getValue() << endl;
+// Main Usage
+int main(){
+    Device* bluetoothObject = new Bluetooth;
+    bluetoothObject->setSpeed(20);
+    bluetoothObject->send("First Object");
 
-    object = ObjectFactory::getType1Value2();
-    cout << object->getType() << ": " << object->getValue() << endl;
+    Prototype* prototypeObject = new BluetoothPrototype;
+    Device* clonedBluetoothObject = prototypeObject->clone(bluetoothObject);
+    clonedBluetoothObject->send("Cloned Object creatd");
 
-    object = ObjectFactory::getType2Value1();
-    cout << object->getType() << ": " << object->getValue() << endl;
-
-    object = ObjectFactory::getType2Value2();
-    cout << object->getType() << ": " << object->getValue() << endl;
-
-    return 0;
+    cout<<"If speed is same in two objects, it means clone worked successfully"<<endl;
 }
