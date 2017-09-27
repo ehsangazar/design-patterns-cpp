@@ -27,17 +27,17 @@ Structural
 Behavioral
 ----------
 
- - [**Chain Of Responsibility**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral/chain-of-responsibility.cpp)
- - [**Command**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral/command.cpp)
- - [**Interpreter**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral/interpreter.cpp)
- - [**Iterator**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral/iterator.cpp)
- - [**Mediator**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral/mediator.cpp)
- - [**Momento**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral/momento.cpp)
- - [**Observer**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral/observer.cpp)
- - [**State**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral/state.cpp)
- - [**Strategy**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral/strategy.cpp)
- - [**Template Method**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral/template-method.cpp)
- - [**Visitor**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral/visitor.cpp)
+ - [**Chain Of Responsibility**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral-patterns/chain-of-responsibility.cpp)
+ - [**Command**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral-patterns/command.cpp)
+ - [**Interpreter**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral-patterns/interpreter.cpp)
+ - [**Iterator**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral-patterns/iterator.cpp)
+ - [**Mediator**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral-patterns/mediator.cpp)
+ - [**Momento**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral-patterns/momento.cpp)
+ - [**Observer**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral-patterns/observer.cpp)
+ - [**State**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral-patterns/state.cpp)
+ - [**Strategy**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral-patterns/strategy.cpp)
+ - [**Template Method**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral-patterns/template-method.cpp)
+ - [**Visitor**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral-patterns/visitor.cpp)
 
 
 
