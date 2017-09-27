@@ -1,4 +1,5 @@
-#Design Patterns in C++ with Real Examples
+## Design Patterns in C++ with Real Examples
+
 In this repo you can find all familiar design patterns that uses in most C++ frameworks.  
 Design patterns divided into three categories as below :
 
@@ -39,10 +40,3 @@ Behavioral
  - [**Template Method**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral-patterns/template-method.cpp)
  - [**Visitor**](https://github.com/ehsangazar/design-patterns-cpp/blob/master/behavioral-patterns/visitor.cpp)
 
-
-
-Bugs & Issues
--------------
-If you have find any incorrect statement or bugs in examples please file out an issue [Here](https://github.com/ehsangazar/design-patterns-cpp/issues)
-
-**To be continue ...**
